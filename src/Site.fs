@@ -312,7 +312,8 @@ module Site =
 
     let Main (samples: list<Samples.Sample>) =
         let router = Router.Infer<PageTy>()
-        let var = Router.InstallHash PageTy.Home router
+        // rk default page and sample
+        let var = Router.InstallHash (PageTy.Samples Samples.SimpleTextBox) router
         let go ty = Var.Set var ty
         var.View.Doc(function
             | PageTy.Home -> HomePage go
